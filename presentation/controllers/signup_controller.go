@@ -1,23 +1,26 @@
 package controllers
 
-type Controller interface {
-	handle(request HttpRequest) HttpResponse
-}
-
-type HttpRequest struct {
-	Body interface{}
-}
-
-type HttpResponse struct {
-	Code int16
-	Body interface{}
-}
+import (
+	"clean-arch/models"
+	presentation "clean-arch/presentation/errors"
+	"encoding/json"
+)
 
 type SignupController struct {}
 
-func (s SignupController) handle(r HttpRequest) HttpResponse {
-	return HttpResponse{
-		Code: 200,
-		Body: nil,
+func NewSignupController() *SignupController {
+	return &SignupController{}
+}
+
+func (s SignupController) handle(r models.HttpRequest) models.HttpResponse {
+	var a models.AccountModel
+	if err := json.NewDecoder(r.Body).Decode(&a); err != nil {
+		return InternalServer()
 	}
+
+	if a.IsNameEmpty() {
+		return BadRequest(presentation.InvalidParamError("invalid param"))
+	}
+
+	return OK(a)
 }
