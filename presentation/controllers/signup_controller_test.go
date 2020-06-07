@@ -10,25 +10,47 @@ import (
 	"testing"
 )
 
-func TestSignupController_ShouldReturn400IfNoNameIsProvided(t *testing.T) {
+func TestSignupController(t *testing.T) {
+
 	controller := NewSignupController()
 
-	a := models.AccountModel{
-		Email:    "john@doe.com",
-		Password: "123123",
-		PasswordConfirmation: "123123",
-	}
+	t.Run("should return 400 if no name is provided", func(t *testing.T) {
+		a := models.AccountModel{
+			Email:    "john@doe.com",
+			Password: "123123",
+			PasswordConfirmation: "123123",
+		}
 
-	r := CreateTestRequestJSON(a)
-	response := controller.handle(r)
-	if response.Code != http.StatusBadRequest {
-		t.Error("Expected Code 400")
-	}
+		r := CreateTestRequestJSON(a)
+		response := controller.handle(r)
+		if response.Code != http.StatusBadRequest {
+			t.Error("Expected Code 400")
+		}
 
-	err := UnmarshalApplicationError(response)
-	if err.Name != errors.InvalidParam.Error() {
-		t.Error("Expect InvalidParam")
-	}
+		err := UnmarshalApplicationError(response)
+		if err.Name != errors.InvalidParam.Error() {
+			t.Error("Expect InvalidParam")
+		}
+	})
+
+	t.Run("should return 400 if no password is provided", func(t *testing.T) {
+		a := models.AccountModel{
+			Name: "John",
+			Email:    "john@doe.com",
+			PasswordConfirmation: "123123",
+		}
+
+		r := CreateTestRequestJSON(a)
+		response := controller.handle(r)
+		if response.Code != http.StatusBadRequest {
+			t.Error("Expected Code 400")
+		}
+
+		err := UnmarshalApplicationError(response)
+		if err.Name != errors.InvalidParam.Error() {
+			t.Error("Expect InvalidParam")
+		}
+	})
 }
 
 func UnmarshalApplicationError(response models.HttpResponse) errors.ApplicationError {
