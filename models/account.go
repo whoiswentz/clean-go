@@ -10,3 +10,7 @@ type AccountModel struct {
 func (a AccountModel) IsNameEmpty() bool {
 	return a.Name == ""
 }
+
+func (a AccountModel) IsPasswordEmpty() bool {
+	return a.Password == ""
+}

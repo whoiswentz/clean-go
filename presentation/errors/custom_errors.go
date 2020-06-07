@@ -3,6 +3,7 @@ package errors
 import (
 	"encoding/json"
 	"errors"
+	"fmt"
 )
 
 var (
@@ -23,10 +24,10 @@ func (a ApplicationError) Error() string {
 	return string(b)
 }
 
-func InvalidParamError(msg string) error {
+func InvalidParamError(field string) error {
 	return ApplicationError{
 		Name: InvalidParam.Error(),
-		Msg:  msg,
+		Msg:  fmt.Sprintf("%s: %s", InvalidParam.Error(), field),
 	}
 }
 

@@ -1,8 +1,8 @@
 package controllers
 
 import (
+	"clean-arch/models"
 	app "clean-arch/presentation/errors"
-	"clean-arch/presentation/models"
 	"net/http"
 )
 
