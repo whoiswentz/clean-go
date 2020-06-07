@@ -22,6 +22,10 @@ func (s SignupController) handle(r models.HttpRequest) models.HttpResponse {
 		return BadRequest(presentation.InvalidParamError("name"))
 	}
 
+	if a.IsEmailEmpty() {
+		return BadRequest(presentation.InvalidParamError("email"))
+	}
+
 	if a.IsPasswordEmpty() {
 		return BadRequest(presentation.InvalidParamError("password"))
 	}

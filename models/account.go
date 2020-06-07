@@ -14,3 +14,7 @@ func (a AccountModel) IsNameEmpty() bool {
 func (a AccountModel) IsPasswordEmpty() bool {
 	return a.Password == ""
 }
+
+func (a AccountModel) IsEmailEmpty() bool {
+	return a.Email == ""
+}
