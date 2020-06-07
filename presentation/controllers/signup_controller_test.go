@@ -70,6 +70,25 @@ func TestSignupController(t *testing.T) {
 			t.Error("Expect InvalidParam")
 		}
 	})
+
+	t.Run("should return 400 if no passwordConfirmation is provided", func(t *testing.T) {
+		a := models.AccountModel{
+			Name: "John",
+			Email: "john@doe.com",
+			Password: "123123",
+		}
+
+		r := CreateTestRequestJSON(a)
+		response := controller.handle(r)
+		if response.Code != http.StatusBadRequest {
+			t.Error("Expected Code 400")
+		}
+
+		err := UnmarshalApplicationError(response)
+		if err.Name != errors.InvalidParam.Error() {
+			t.Error("Expect InvalidParam")
+		}
+	})
 }
 
 func UnmarshalApplicationError(response models.HttpResponse) errors.ApplicationError {
