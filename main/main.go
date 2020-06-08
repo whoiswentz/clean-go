@@ -2,8 +2,8 @@ package main
 
 import (
 	"clean-arch/models"
-	"clean-arch/presentation/controllers"
-	"clean-arch/presentation/protocols"
+	"clean-arch/delivery/controllers"
+	"clean-arch/delivery/protocols"
 	"encoding/json"
 	"github.com/gorilla/mux"
 	"log"

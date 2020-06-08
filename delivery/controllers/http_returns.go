@@ -2,7 +2,7 @@ package controllers
 
 import (
 	"clean-arch/models"
-	app "clean-arch/presentation/errors"
+	app "clean-arch/delivery/errors"
 	"net/http"
 )
 

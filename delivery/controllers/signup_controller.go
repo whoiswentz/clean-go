@@ -1,8 +1,8 @@
 package controllers
 
 import (
+	errors "clean-arch/delivery/errors"
 	"clean-arch/models"
-	presentation "clean-arch/presentation/errors"
 	"encoding/json"
 )
 
@@ -19,20 +19,19 @@ func (s SignupController) Handle(r models.HttpRequest) models.HttpResponse {
 	}
 
 	if a.IsNameEmpty() {
-		return BadRequest(presentation.InvalidParamError("name"))
+		return BadRequest(errors.InvalidParamError("name"))
 	}
 
 	if a.IsEmailEmpty() {
-		return BadRequest(presentation.InvalidParamError("email"))
+		return BadRequest(errors.InvalidParamError("email"))
 	}
 
 	if a.IsPasswordEmpty() {
-		return BadRequest(presentation.InvalidParamError("password"))
+		return BadRequest(errors.InvalidParamError("password"))
 	}
 
 	if a.IsPasswordConfirmationEmpty() {
-		return BadRequest(presentation.InvalidParamError("passwordConfirmation"))
-
+		return BadRequest(errors.InvalidParamError("passwordConfirmation"))
 	}
 
 	return OK(a)

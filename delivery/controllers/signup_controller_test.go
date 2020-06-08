@@ -2,7 +2,7 @@ package controllers
 
 import (
 	"clean-arch/models"
-	"clean-arch/presentation/errors"
+	"clean-arch/delivery/errors"
 	"encoding/json"
 	"fmt"
 	"net/http"
