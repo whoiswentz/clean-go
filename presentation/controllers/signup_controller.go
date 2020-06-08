@@ -12,7 +12,7 @@ func NewSignupController() *SignupController {
 	return &SignupController{}
 }
 
-func (s SignupController) handle(r models.HttpRequest) models.HttpResponse {
+func (s SignupController) Handle(r models.HttpRequest) models.HttpResponse {
 	var a models.AccountModel
 	if err := json.NewDecoder(r.Body).Decode(&a); err != nil {
 		return InternalServer()
@@ -31,7 +31,7 @@ func (s SignupController) handle(r models.HttpRequest) models.HttpResponse {
 	}
 
 	if a.IsPasswordConfirmationEmpty() {
-		return BadRequest(presentation.InvalidParamError("password"))
+		return BadRequest(presentation.InvalidParamError("passwordConfirmation"))
 
 	}
 

@@ -22,7 +22,7 @@ func TestSignupController(t *testing.T) {
 		}
 
 		r := CreateTestRequestJSON(a)
-		response := controller.handle(r)
+		response := controller.Handle(r)
 		if response.Code != http.StatusBadRequest {
 			t.Error("Expected Code 400")
 		}
@@ -41,7 +41,7 @@ func TestSignupController(t *testing.T) {
 		}
 
 		r := CreateTestRequestJSON(a)
-		response := controller.handle(r)
+		response := controller.Handle(r)
 		if response.Code != http.StatusBadRequest {
 			t.Error("Expected Code 400")
 		}
@@ -60,7 +60,7 @@ func TestSignupController(t *testing.T) {
 		}
 
 		r := CreateTestRequestJSON(a)
-		response := controller.handle(r)
+		response := controller.Handle(r)
 		if response.Code != http.StatusBadRequest {
 			t.Error("Expected Code 400")
 		}
@@ -79,7 +79,7 @@ func TestSignupController(t *testing.T) {
 		}
 
 		r := CreateTestRequestJSON(a)
-		response := controller.handle(r)
+		response := controller.Handle(r)
 		if response.Code != http.StatusBadRequest {
 			t.Error("Expected Code 400")
 		}

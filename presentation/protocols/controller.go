@@ -5,5 +5,5 @@ import (
 )
 
 type Controller interface {
-	handle(request models.HttpRequest) models.HttpResponse
+	Handle(request models.HttpRequest) models.HttpResponse
 }
