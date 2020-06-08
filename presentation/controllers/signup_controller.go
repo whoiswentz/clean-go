@@ -6,7 +6,7 @@ import (
 	"encoding/json"
 )
 
-type SignupController struct {}
+type SignupController struct{}
 
 func NewSignupController() *SignupController {
 	return &SignupController{}

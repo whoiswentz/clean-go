@@ -16,8 +16,8 @@ func TestSignupController(t *testing.T) {
 
 	t.Run("should return 400 if no name is provided", func(t *testing.T) {
 		a := models.AccountModel{
-			Email:    "john@doe.com",
-			Password: "123123",
+			Email:                "john@doe.com",
+			Password:             "123123",
 			PasswordConfirmation: "123123",
 		}
 
@@ -35,8 +35,8 @@ func TestSignupController(t *testing.T) {
 
 	t.Run("should return 400 if no password is provided", func(t *testing.T) {
 		a := models.AccountModel{
-			Name: "John",
-			Email:    "john@doe.com",
+			Name:                 "John",
+			Email:                "john@doe.com",
 			PasswordConfirmation: "123123",
 		}
 
@@ -54,8 +54,8 @@ func TestSignupController(t *testing.T) {
 
 	t.Run("should return 400 if no email is provided", func(t *testing.T) {
 		a := models.AccountModel{
-			Name: "John",
-			Password: "123123",
+			Name:                 "John",
+			Password:             "123123",
 			PasswordConfirmation: "123123",
 		}
 
@@ -73,8 +73,8 @@ func TestSignupController(t *testing.T) {
 
 	t.Run("should return 400 if no passwordConfirmation is provided", func(t *testing.T) {
 		a := models.AccountModel{
-			Name: "John",
-			Email: "john@doe.com",
+			Name:     "John",
+			Email:    "john@doe.com",
 			Password: "123123",
 		}
 

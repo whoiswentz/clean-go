@@ -66,4 +66,3 @@ func Adapt(c protocols.Controller) HandleFunc {
 		w.Write(jsonResponse)
 	}
 }
-

@@ -12,7 +12,7 @@ var (
 
 type ApplicationError struct {
 	Name string `json:"name"`
-	Msg string `json:"msg"`
+	Msg  string `json:"msg"`
 }
 
 func (a ApplicationError) Error() string {
@@ -32,7 +32,7 @@ func InvalidParamError(field string) error {
 }
 
 func InternalServerError() error {
-	return  ApplicationError{
+	return ApplicationError{
 		Name: "InternalServerError",
 		Msg:  "internal server error",
 	}
