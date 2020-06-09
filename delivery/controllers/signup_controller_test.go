@@ -1,8 +1,8 @@
 package controllers
 
 import (
-	"clean-arch/models"
 	"clean-arch/delivery/errors"
+	"clean-arch/models"
 	"encoding/json"
 	"fmt"
 	"net/http"
@@ -15,7 +15,7 @@ func TestSignupController(t *testing.T) {
 	controller := NewSignupController()
 
 	t.Run("should return 400 if no name is provided", func(t *testing.T) {
-		a := models.AccountModel{
+		a := models.AddAccountModel{
 			Email:                "john@doe.com",
 			Password:             "123123",
 			PasswordConfirmation: "123123",
@@ -34,7 +34,7 @@ func TestSignupController(t *testing.T) {
 	})
 
 	t.Run("should return 400 if no password is provided", func(t *testing.T) {
-		a := models.AccountModel{
+		a := models.AddAccountModel{
 			Name:                 "John",
 			Email:                "john@doe.com",
 			PasswordConfirmation: "123123",
@@ -53,7 +53,7 @@ func TestSignupController(t *testing.T) {
 	})
 
 	t.Run("should return 400 if no email is provided", func(t *testing.T) {
-		a := models.AccountModel{
+		a := models.AddAccountModel{
 			Name:                 "John",
 			Password:             "123123",
 			PasswordConfirmation: "123123",
@@ -72,7 +72,7 @@ func TestSignupController(t *testing.T) {
 	})
 
 	t.Run("should return 400 if no passwordConfirmation is provided", func(t *testing.T) {
-		a := models.AccountModel{
+		a := models.AddAccountModel{
 			Name:     "John",
 			Email:    "john@doe.com",
 			Password: "123123",

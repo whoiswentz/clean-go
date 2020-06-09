@@ -7,7 +7,8 @@ import (
 )
 
 var (
-	InvalidParam = errors.New("InvalidParam")
+	InvalidParam   = errors.New("InvalidParam")
+	InternalServer = errors.New("InternalServerError")
 )
 
 type ApplicationError struct {
@@ -33,7 +34,7 @@ func InvalidParamError(field string) error {
 
 func InternalServerError() error {
 	return ApplicationError{
-		Name: "InternalServerError",
+		Name: InternalServer.Error(),
 		Msg:  "internal server error",
 	}
 }

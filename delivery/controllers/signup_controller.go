@@ -1,19 +1,21 @@
 package controllers
 
 import (
-	errors "clean-arch/delivery/errors"
+	"clean-arch/delivery/errors"
 	"clean-arch/models"
 	"encoding/json"
 )
 
-type SignupController struct{}
+type SignupController struct {
+
+}
 
 func NewSignupController() *SignupController {
 	return &SignupController{}
 }
 
 func (s SignupController) Handle(r models.HttpRequest) models.HttpResponse {
-	var a models.AccountModel
+	var a models.AddAccountModel
 	if err := json.NewDecoder(r.Body).Decode(&a); err != nil {
 		return InternalServer()
 	}

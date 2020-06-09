@@ -1,9 +1,9 @@
 package main
 
 import (
-	"clean-arch/models"
 	"clean-arch/delivery/controllers"
 	"clean-arch/delivery/protocols"
+	"clean-arch/models"
 	"encoding/json"
 	"github.com/gorilla/mux"
 	"log"
@@ -63,6 +63,8 @@ func Adapt(c protocols.Controller) HandleFunc {
 
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.Code)
-		w.Write(jsonResponse)
+		if _, err := w.Write(jsonResponse); err != nil {
+			panic(err)
+		}
 	}
 }
